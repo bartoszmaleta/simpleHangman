@@ -11,7 +11,7 @@ public class LogicHandler {
     public static List<String> hiddenWordList = new ArrayList<String>();
 
     public static int capitalLength() {
-        capitalLength = Controller.capitol.length();
+        capitalLength = Controller.capital.length();
         return capitalLength;
     }
 
