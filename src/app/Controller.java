@@ -11,7 +11,7 @@ public class Controller {
     public static int playersLife = 0;
     public static int life = 5;
     public static String countryAndCapital;
-    public static String capitol;
+    public static String capital;
     public static String guess;
     public static String hiddenWord;
     public static String joinedHiddenWord;
@@ -24,7 +24,7 @@ public class Controller {
                 .getTxtFileString("src/app/countries_and_capitals.txt");
         FileHandler.getHangmanArt("src/app/hangman.txt");
         countryAndCapital = FileHandler.stringSpliter();
-        capitol = FileHandler.countryAndCapitalSplitter().toUpperCase();
+        capital = FileHandler.countryAndCapitalSplitter().toUpperCase();
         LogicHandler.capitalLength();
         LogicHandler.hiddenWord();
         FileHandler.hangmanArtSpliter();
@@ -34,26 +34,26 @@ public class Controller {
             System.out.println("Used letters: " + usedLetters + "\n");
             System.out.println(FileHandler.hangmanArtlist(playersLife));
             System.out.println(LogicHandler.joinedHiddenWord() + "\n");
-            System.out.println(capitol);
+            System.out.println(capital);
             System.out.println("\nTake a guess: ");
             guess = reader.nextLine().toUpperCase();
             LogicHandler.clearScreen();
 
             if (guess.length() == 1) {
-                if (capitol.contains(guess)) {
+                if (capital.contains(guess)) {
                     LogicHandler.clearScreen();
                     System.out.println("Thats a good letter!\n");
-                    int playerGuess = capitol.indexOf(guess);
+                    int playerGuess = capital.indexOf(guess);
                     while (playerGuess >= 0) {
                         LogicHandler.hiddenWordList.set(playerGuess, guess);
-                        playerGuess = capitol.indexOf(guess, playerGuess + 1);
+                        playerGuess = capital.indexOf(guess, playerGuess + 1);
                         joinedHiddenWord = LogicHandler.joinedHiddenWord();
-                        if (joinedHiddenWord.equals(capitol)) {
+                        if (joinedHiddenWord.equals(capital)) {
                             long endTime = System.nanoTime();
                             long totalTime = (endTime - startTime) / 1000000000;
                             LogicHandler.clearScreen();
                             System.out.println("You have guessed! Congratulations!\n");
-                            System.out.println("The word is: " + capitol + "\n");
+                            System.out.println("The word is: " + capital + "\n");
                             System.out.println("Your game time: " + totalTime + " seconds\n");
                             System.exit(0);
                         }
